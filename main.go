@@ -48,6 +48,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
+	// Users tried [[cardname]], [[!cardname]], [[ cardname ]], [[! cardname ]], support them all
 	re := regexp.MustCompile(`\[\[\!?([^|\]]+)\|?([^\]]*)\]\]`)
 	cardQuerys := re.FindAllStringSubmatch(m.Content, -1)
 

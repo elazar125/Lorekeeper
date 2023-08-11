@@ -1,7 +1,7 @@
 #! /usr/bin/bash
 
 # [b]uild & [d]eploy
-env GOOS=linux go build -o dist/lorekeeper.new
+env CGO_ENABLED=0 GOOS=linux go build -o dist/lorekeeper.new
 scp dist/lorekeeper.new spellslingerer:~/lorekeeper
 ssh spellslingerer -t << 'EOF'
 systemctl stop lorekeeper
